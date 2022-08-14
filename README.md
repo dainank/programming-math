@@ -1,4 +1,4 @@
-# README
+# Programming Maths
 Learning and practicing maths through coding (Python). Repository contains several folders each with little exercises and programs that represent mathematical topics.
 
 ## Topics
