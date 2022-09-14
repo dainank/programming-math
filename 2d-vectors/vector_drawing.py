@@ -13,7 +13,6 @@ green = 'C2'
 purple = 'C4'
 orange = 'C2'
 gray = 'gray'
-
 class Polygon():
     def __init__(self, *vertices, color=blue, fill=None, alpha=0.4):
         self.vertices = vertices
@@ -57,7 +56,7 @@ def extract_vectors(objects):
             raise TypeError("Unrecognized object: {}".format(object))
 
 def draw(*objects, origin=True, axes=True, grid=(1,1), nice_aspect_ratio=True,
-            width=6, save_as=None):
+            width=6, save_as=None, title='Figure'):
 
     all_vectors = list(extract_vectors(objects))
     xs, ys = zip(*all_vectors)
@@ -125,6 +124,7 @@ def draw(*objects, origin=True, axes=True, grid=(1,1), nice_aspect_ratio=True,
             raise TypeError("Unrecognized object: {}".format(object))
 
     fig = matplotlib.pyplot.gcf()
+    fig.canvas.set_window_title(title)
 
     if nice_aspect_ratio:
         coords_height = (ylim()[1] - ylim()[0])
