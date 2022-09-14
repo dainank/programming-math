@@ -1,3 +1,6 @@
+# Important
+Exercise solution implementations can be found in the ```vectors_ex.py``` file.
+
 # Key Terms
 - 2D Space: *plane*
     - height
