@@ -2,8 +2,6 @@ from math import sqrt, pi, ceil, floor
 import matplotlib
 import matplotlib.patches
 from matplotlib.collections import PatchCollection
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import xlim, ylim
