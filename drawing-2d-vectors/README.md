@@ -12,3 +12,6 @@ Vectors: *Objects that live in multi-dimensional spaces.*
     - width
 Pythagorean Theorem: *For right-angled triangles, can be used to find side lengths.*
     - `a^2 + b^2 = c^2`
+
+## Commands
+`pyinstaller --onefile pythonScriptName.py`
