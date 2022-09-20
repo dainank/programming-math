@@ -11,6 +11,8 @@ Learning and practicing maths through coding (Python). Repository contains sever
 - Machine learning algorithms for regression and classification
 
 ## Setting Up Dev Environment For This Repository
-*If any links are broken, feel free to open a thread.*
+*If any links are broken, feel free to open a thread. Installation of Anaconda is ridiculously complex, just look at videos or docs if you get errors.*
 ### Dependencies
 - [Anaconda (**2019.03**[Python 3.7 Version])](https://repo.anaconda.com/archive/Anaconda3-2019.03-Windows-x86_64.exe)
+- [Python (**3.7.3**)](https://www.python.org/ftp/python/3.7.3/python-3.7.3-amd64.exe)
+- matplotlib: ```conda install -c conda-forge matplotlib```
