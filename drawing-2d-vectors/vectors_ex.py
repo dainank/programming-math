@@ -1,5 +1,6 @@
-from vector_drawing import *
-from random import uniform
+from vector_drawing import * #2
+from random import uniform #2
+from math import sin, cos, asin, pi, acos, atan2 #2.3
 
 # All methods on utilized by drawings are present in the archive directory files
 def add(v1, v2):
@@ -10,6 +11,9 @@ def scale(scalar,v):
 
 def translate(translation, vectors):
    return [add(translation, v) for v in vectors]
+
+def length(v):
+    return sqrt(v[0]**2 + v[1]**2)
 
 ex2_2 = [
     (2, -2), (0, 0), 
@@ -105,3 +109,32 @@ dinos = [Polygon(*translate(t, complete_dino_vectors),color=blue) for t in trans
 
 # draw the end result
 draw(*dinos, grid=None, axes=None, origin=None, window_title="Exercise 2.11")
+
+# 2.3 ------------
+def to_cartesian(polar_vector): # convert polar to Cartesian coordinates
+   length, angle = polar_vector[0], polar_vector[1]
+   return (length*cos(angle), length*sin(angle))
+
+def to_polar(vector):   # convert Cartesian to polar coordinates
+   x, y = vector[0], vector[1]
+   angle = atan2(y,x)
+   return (length(vector), angle)
+
+print('Exercise 2.27: ')
+print(length((-1.34, 2.68)))
+
+print('Exercise 2.28: ')
+print('4 / 10 = 0.4')
+
+print('Exercise 2.29: ')
+print(to_cartesian((15, 37)))
+
+print('Exercise 2.30: ')
+print(f"({8.5 * cos(2.18166)}, {8.5 * sin(2.18166)})")  # in radians
+
+polar_coords = [(cos(x*pi/100.0), 2*pi*x/1000.0) for x in range(0,1000)]
+polar_vectors = [to_cartesian(p) for p in polar_coords]
+draw(Polygon(*polar_vectors, color=green))
+
+print('Exercise 2.40: ')
+print(f"({to_cartesian((1, 1))}, {to_cartesian((1, -1))})")  # in radians
