@@ -43,6 +43,9 @@ def subtract(v1,v2):
 def distance(v1,v2):
    return length(subtract(v1,v2))
 
+def length(input):
+    return 0
+
 def perimeter(vectors):
    distances = [distance(vectors[i], vectors[(i+1)%len(vectors)])
                 for i in range(0,len(vectors))]

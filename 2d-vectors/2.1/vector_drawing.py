@@ -124,7 +124,7 @@ def draw(*objects, origin=True, axes=True, grid=(1,1), nice_aspect_ratio=True,
             raise TypeError("Unrecognized object: {}".format(object))
 
     fig = matplotlib.pyplot.gcf()
-    fig.canvas.set_window_title(title)
+    # fig.canvas.set_window_title(title)
 
     if nice_aspect_ratio:
         coords_height = (ylim()[1] - ylim()[0])
