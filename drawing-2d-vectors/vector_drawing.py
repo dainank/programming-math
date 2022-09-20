@@ -1,11 +1,12 @@
-from math import sqrt, pi, ceil, floor
+from math import sqrt, ceil, floor
 import matplotlib
 import matplotlib.patches
-from matplotlib.collections import PatchCollection
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import xlim, ylim
 
+# colors predefined
 blue = 'C0'
 black = 'k'
 red = 'C3'
@@ -13,6 +14,8 @@ green = 'C2'
 purple = 'C4'
 orange = 'C2'
 gray = 'gray'
+
+# classes and constructs
 class Polygon():
     def __init__(self, *vertices, color=blue, fill=None, alpha=0.4):
         self.vertices = vertices
@@ -56,7 +59,7 @@ def extract_vectors(objects):
             raise TypeError("Unrecognized object: {}".format(object))
 
 def draw(*objects, origin=True, axes=True, grid=(1,1), nice_aspect_ratio=True,
-            width=6, save_as=None, title='Figure'):
+            width=6, save_as=None, window_title='Figure'):
 
     all_vectors = list(extract_vectors(objects))
     xs, ys = zip(*all_vectors)
@@ -124,7 +127,7 @@ def draw(*objects, origin=True, axes=True, grid=(1,1), nice_aspect_ratio=True,
             raise TypeError("Unrecognized object: {}".format(object))
 
     fig = matplotlib.pyplot.gcf()
-    # fig.canvas.set_window_title(title)
+    fig.canvas.set_window_title(window_title)
 
     if nice_aspect_ratio:
         coords_height = (ylim()[1] - ylim()[0])

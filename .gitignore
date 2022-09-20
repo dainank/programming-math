@@ -302,6 +302,11 @@ paket-files/
 # CodeRush personal settings
 .cr/personal
 
+# Build files
+**drawing-2d-vectors/build
+**drawing-2d-vectors/dist
+**drawing-2d-vectors/vectors_ex.spec
+
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
