@@ -1,6 +1,4 @@
 from math import sqrt, pi
-import matplotlib
-import os
 from matplotlib.patches import Polygon, FancyArrowPatch
 from matplotlib.collections import PatchCollection
 import matplotlib.pyplot as plt
