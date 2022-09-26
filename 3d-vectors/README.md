@@ -13,6 +13,13 @@ Since computer screens are 2D, a large portion of the programming involves conve
 
 Through the *z* axis we can add the third dimension, also known as depth.
 
+See `length_vector.png` in `./3d-vectors` for finding the length of a 3d vector.
+
+Two angles are required to specify direction in 3D:
+- ϕ (phi) [first angle, makes with 'x']
+- θ (theta) [second angle, makes with 'z']
+*these are known as **spherical coordinates**, but we use **vector products** usually for calculations.*
+
 ## Important
 
 Matplotlib is used gain, with 3D wrappers:
