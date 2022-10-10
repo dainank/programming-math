@@ -1,6 +1,6 @@
 from vectors import *
 
-def compose(*args):
+def compose(*args): # chaining multiple functions
     def new_function(input):
         result = input
         for f in reversed(args):

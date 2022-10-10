@@ -14,7 +14,7 @@ def scale2(v):  # multiply input vector by 2
 def translate1left(v):
     return add((-1,0,0), v)
 
-def compose(f1,f2):
+def compose(f1,f2): # chaining mulitple functions
     def new_function(input):
         return f1(f2(input))
     return new_function
