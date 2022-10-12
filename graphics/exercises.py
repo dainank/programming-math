@@ -19,3 +19,13 @@ print(translate_by_111((2, 3, 2)))  # works as intended see console
 
 ### Exercise 4.2
 draw_model(polygon_map(translate_by((0,0,-20)), load_triangles()))  # draw, polygon, with triangles (coordinates) and translate
+
+### Exercise 4.9
+def stretch_x(scalar, vector):
+    x, y, z = vector
+    return (scalar * x, y, z)
+
+def stretch_x_by(scalar):
+    def new_function(v):
+        return (stretch_x(scalar, v))
+    return new_function
