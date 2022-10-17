@@ -48,9 +48,26 @@ def transform_b(v):
 
 compose_a_b = compose(transform_a, transform_b)
 
+def dot(u,v):
+    if (u.len() != v.len()):
+        raise ValueError("Vectors provided need to be of same dimension.")
+    return sum([coord1 * coord2 for coord1,coord2 in zip(u,v)])
+
+def matrix_multiply(a,b):
+    return tuple(
+        tuple(dot(row,col) for col in zip(*b))
+        for row in a
+    )
 
 def matrix_power(power, matrix):
+    if(power[(len(power)-1)] != matrix[0]):
+        raise ValueError("Vectors provided need to be of same dimension.")
     result = matrix
     for _ in range(1, power):
         result = matrix_multiply(result, matrix)
     return result
+
+def transpose(matrix):
+   return tuple(zip(*matrix))
+
+infer_matrix(3)((1, 0, 0), (0, 1, 0))
