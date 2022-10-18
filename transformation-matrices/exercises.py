@@ -48,26 +48,49 @@ def transform_b(v):
 
 compose_a_b = compose(transform_a, transform_b)
 
-def dot(u,v):
-    if (u.len() != v.len()):
-        raise ValueError("Vectors provided need to be of same dimension.")
-    return sum([coord1 * coord2 for coord1,coord2 in zip(u,v)])
 
-def matrix_multiply(a,b):
+def dot(u, v):
+    if (len(u) != len(v)):
+        raise ValueError("Vectors provided need to be of same dimension.")
+    return sum([coord1 * coord2 for coord1, coord2 in zip(u, v)])
+
+
+def matrix_multiply(a, b):
     return tuple(
-        tuple(dot(row,col) for col in zip(*b))
+        tuple(dot(row, col) for col in zip(*b))
         for row in a
     )
 
+
 def matrix_power(power, matrix):
-    if(power[(len(power)-1)] != matrix[0]):
+    if (power[(len(power)-1)] != matrix[0]):
         raise ValueError("Vectors provided need to be of same dimension.")
     result = matrix
     for _ in range(1, power):
         result = matrix_multiply(result, matrix)
     return result
 
-def transpose(matrix):
-   return tuple(zip(*matrix))
 
-infer_matrix(3)((1, 0, 0), (0, 1, 0))
+def transpose(matrix):
+    return tuple(zip(*matrix))
+
+# infer_matrix(3)((1, 0, 0), (0, 1, 0))
+
+
+def translate_4d(translation):
+    def new_function(target):
+        a, b, c, d = translation
+        x, y, z, w = target
+        matrix = (
+            (1, 0, 0, 0, a),
+            (0, 1, 0, 0, b),
+            (0, 0, 1, 0, c),
+            (0, 0, 0, 1, d),
+            (0, 0, 0, 0, 1))
+        vector = (x, y, z, w, 1)
+        x_out, y_out, z_out, w_out, _ = multiply_matrix_vector(matrix, vector)
+        return (x_out, y_out, z_out, w_out)
+    return new_function
+
+
+print(translate_4d((1, 2, 3, 4))((10, 20, 30, 40)))
