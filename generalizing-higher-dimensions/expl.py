@@ -1,9 +1,18 @@
-from re import X
+from math import isclose
+from random import uniform
 
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta, abstractmethod, abstractproperty
 
 
 class Vector(metaclass=ABCMeta):
+    @classmethod
+    @abstractmethod
+    def zero():
+        pass
+
+    def __neg__(self):
+        return self.scale(-1)
+
     @abstractmethod
     def scale(self, scalar):
         pass
@@ -27,6 +36,9 @@ class Vector(metaclass=ABCMeta):
     def __add__(self, other):
         return self.add(other)
 
+    def __truediv__(self, scalar):
+       return self.scale(1.0/scalar)
+
 
 class Vec2(Vector):  # 2d vector
     def __init__(self, x, y) -> None:
@@ -38,6 +50,9 @@ class Vec2(Vector):  # 2d vector
 
     def __eq__(self, other):    # what counts as equal
         return self.x == other.x and self.y == other.y
+
+    def zero():
+        return Vec2(0, 0)
 
     def add(self, v2):
         return Vec2(self.x + v2.x, self.y + v2.y)
@@ -51,6 +66,9 @@ class Vec3(Vector):
         self.x = x
         self.y = y
         self.z = z
+
+    def zero():
+        return Vec3(0, 0, 0)
 
     def add(self, other):
         return Vec3(self.x + other.x, self.y + other.y, self.z + other.z)
@@ -67,31 +85,64 @@ class Vec3(Vector):
         return "Vec3({},{},{})".format(self.x, self.y, self.z)
 
 
+class CoordinateVector(Vector):
+    @abstractmethod
+    def dimension(self):
+        pass
+
+    def __init__(self, *coordinates):
+        self.coordinates = tuple(x for x in coordinates)
+
+    def __repr__(self):
+        return "{}{}".format(self.__class__.__qualname__, self.coordinates)
+
+
 # impl
 v = Vec2(3, 4)
 w = v.add(Vec2(1, 2))
 print(w)
 
 # Unit Tests
-from random import uniform
-from math import isclose
+
 
 def random_scalar():
-   return uniform(-10,10)
+    return uniform(-10, 10)
+
 
 def random_vec2():
-   return Vec2(random_scalar(),random_scalar())
+    return Vec2(random_scalar(), random_scalar())
+
+
+def random_vec3():
+    return Vec3(random_scalar(), random_scalar(), random_scalar())
+
 
 a = random_scalar()
-u, v  = random_vec2(), random_vec2()
-assert a * (u + v) == a * v  + a * u
+u, v = random_vec2(), random_vec2()
+assert a * (u + v) == a * v + a * u
 
 
-def approx_equal_vec2(v,w):
-    return isclose(v.x,w.x) and isclose(v.y,w.y)
+def approx_equal_vec2(v, w):
+    return isclose(v.x, w.x) and isclose(v.y, w.y)
 
-for _ in range(0,100):
+
+def approx_equal_vec3(v, w):
+    return isclose(v.x, w.x) and isclose(v.y, w.y) and isclose(v.z, w.z)
+
+
+for _ in range(0, 100):
     a = random_scalar()
-    u, v  = random_vec2(), random_vec2()
-    assert approx_equal_vec2(a * (u + v), 
+    u, v = random_vec2(), random_vec2()
+    assert approx_equal_vec2(a * (u + v),
                              a * v + a * u)
+
+def test(zero,eq,a,b,u,v,w):
+   ...
+   assert eq(zero + v, v)
+   assert eq(0 * v, zero)
+   assert eq(-v + v, zero)
+
+for i in range(0, 100):
+    a, b = random_scalar(), random_scalar()
+    u, v, w = random_vec3(), random_vec3(), random_vec3()
+    test(approx_equal_vec3, a, b, u, v, w)
