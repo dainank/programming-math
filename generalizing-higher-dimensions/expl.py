@@ -37,7 +37,28 @@ class Vector(metaclass=ABCMeta):
         return self.add(other)
 
     def __truediv__(self, scalar):
-       return self.scale(1.0/scalar)
+        return self.scale(1.0/scalar)
+
+
+class Vec0(Vector):
+    def __init__(self):
+        pass
+
+    def add(self, other):
+        return Vec0()
+
+    def scale(self, scalar):
+        return Vec0()
+
+    @classmethod
+    def zero(cls):
+        return Vec0()
+
+    def __eq__(self, other):
+        return self.__class__ == other.__class__ == Vec0
+
+    def __repr__(self):
+        return "Vec0()"
 
 
 class Vec2(Vector):  # 2d vector
@@ -83,6 +104,27 @@ class Vec3(Vector):
 
     def __repr__(self):
         return "Vec3({},{},{})".format(self.x, self.y, self.z)
+
+
+class Vec1(Vector):
+    def __init__(self, x):
+        self.x = x
+
+    def add(self, other):
+        return Vec1(self.x + other.x)
+
+    def scale(self, scalar):
+        return Vec1(scalar * self.x)
+
+    @classmethod
+    def zero(cls):
+        return Vec1(0)
+
+    def __eq__(self, other):
+        return self.x == other.x
+
+    def __repr__(self):
+        return "Vec1({})".format(self.x)
 
 
 class CoordinateVector(Vector):
@@ -136,11 +178,13 @@ for _ in range(0, 100):
     assert approx_equal_vec2(a * (u + v),
                              a * v + a * u)
 
-def test(zero,eq,a,b,u,v,w):
-   ...
-   assert eq(zero + v, v)
-   assert eq(0 * v, zero)
-   assert eq(-v + v, zero)
+
+def test(zero, eq, a, b, u, v, w):
+    ...
+    assert eq(zero + v, v)
+    assert eq(0 * v, zero)
+    assert eq(-v + v, zero)
+
 
 for i in range(0, 100):
     a, b = random_scalar(), random_scalar()
