@@ -2,7 +2,6 @@
 Learning and practicing maths through coding (Python). Repository contains several folders each with little exercises and programs that represent mathematical topics. Non-coding related exercises can be found in the documentation handed in on Canvas.
 
 ## Topics
-
 - Vector geometry for computer graphics
 - Matrices and linear transformations
 - Core concepts from calculus
