@@ -1,5 +1,5 @@
 # Maths with Programming
-Learning and practicing maths through coding (Python). Repository contains several folders each with little exercises and programs that represent mathematical topics. Non-coding related exercises can be found in the documentation handed in on Canvas.
+Learning and practicing maths through coding (Python). The repository contains several folders each with little exercises and programs that represent mathematical topics. Non-coding-related exercises can be found in the documentation handed in on Canvas. Please be aware that the structure, code, and implementations are very experimental thus many sections of this repository may contain no documentation, broken methods, or repeated code as I mess around with the different topics.
 
 ## Topics
 

@@ -1,4 +1,5 @@
 # Import a library of functions called 'pygame'
+import numpy as np
 import pygame
 import vectors
 from math import pi, sqrt, cos, sin, atan2
@@ -79,7 +80,7 @@ asteroids = [Asteroid() for _ in range(0, asteroid_count)] # array of astroids
 
 for ast in asteroids: # set positions of astroids
     ast.x = randint(-9, 9)
-    ast.y = randint(-9, 9)
+    ast.y = randint(-9, 9)                      
 
 
 # HELPERS / SETTINGS
@@ -181,3 +182,61 @@ if __name__ == "__main__":
     if '--screenshot' in sys.argv:
         screenshot_mode = True
     main()
+
+# 7.3
+
+# 7.4
+# v = (0, 0)
+# No because v will always equal u.
+
+# 7.5
+# v = (-2, 6)
+# (2, 2) + t * (-1 , 3)
+
+# 7.9
+# (2 * 0) + 7 = 7
+# (2 * 3.5) + 0 = 7
+
+# 7.10
+# (3, 0) + t · (0, 1)
+
+# 7.11
+def standard_form(v1, v2):
+   x1, y1 = v1
+   x2, y2 = v2
+   a = y2 - y1
+   b = x1 - x2
+   c = x1 * y2 - y1 * x2
+   return a,b,c
+
+# 7.12
+def subtract(v1,v2):
+    return tuple(v1-v2 for (v1,v2) in zip(v1,v2))
+
+def length(v):
+    return sqrt(sum([coord ** 2 for coord in v]))
+
+def distance(v1,v2):
+    return length(subtract(v1,v2))
+
+def intersection(u1,u2,v1,v2):
+    a1, b1, c1 = standard_form(u1,u2)
+    a2, b2, c2 = standard_form(v1,v2)
+    m = np.array(((a1,b1),(a2,b2)))
+    c = np.array((c1,c2))
+    return np.linalg.solve(m,c)
+
+def segment_checks(s1,s2):
+   u1,u2 = s1
+   v1,v2 = s2
+   l1, l2 = distance(*s1), distance(*s2)
+   x,y = intersection(u1,u2,v1,v2)
+   return [
+       distance(u1, (x,y)) <= l1,
+       distance(u2, (x,y)) <= l1,
+       distance(v1, (x,y)) <= l2,
+       distance(v2, (x,y)) <= l2
+   ]
+
+# 7.15
+# w = (0, 0)
