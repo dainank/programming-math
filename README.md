@@ -15,3 +15,6 @@ Learning and practicing maths through coding (Python). The repository contains s
 - [Anaconda (**2019.03**[Python 3.7 Version])](https://repo.anaconda.com/archive/Anaconda3-2019.03-Windows-x86_64.exe)
 - [Python (**3.7.3**)](https://www.python.org/ftp/python/3.7.3/python-3.7.3-amd64.exe)
 - matplotlib: ```conda install -c conda-forge matplotlib```
+
+### Important
+The Jupyter notebooks may sometimes fail if you try to run individual sections. If this happens, just press the run all button at the top.
