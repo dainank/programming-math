@@ -22,6 +22,8 @@ Two angles are required to specify direction in 3D:
 
 ## Important
 
+Exercises can be found in the `ex.py` file.
+
 Matplotlib is used gain, with 3D wrappers:
 - `Points3D`
 - `Arrow3D`

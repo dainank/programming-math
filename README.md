@@ -18,3 +18,5 @@ Learning and practicing maths through coding (Python). The repository contains s
 
 ### Important
 The Jupyter notebooks may sometimes fail if you try to run individual sections. If this happens, just press the run all button at the top.
+
+Exercises are present within the code.
