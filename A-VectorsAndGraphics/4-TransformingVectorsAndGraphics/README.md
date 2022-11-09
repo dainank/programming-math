@@ -1,4 +1,5 @@
-# TITLE
+# IMPORTANT
+Exercises are within the docx document.
 
 ## Setup
 ### Dependencies
