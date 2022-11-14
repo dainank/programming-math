@@ -1,5 +1,7 @@
-# Part 1 - Vectors and Graphics
-## Key Concepts
+# Part 1 - Vectors and Graphics\
+See individual chapters for answers to questions, completion of mini-projects and implementation of code (**proof of work**).
+
+## Key Concepts (notes)
 - **plane**:
     - a 2D space
     - points in a plane require the origin reference point
@@ -14,6 +16,7 @@
         - e.g. vectors all lying on straight line will still lie on straight line post-transformation
 - **matrices:**
     - rectangular arrays of numbers that can represent linear transformations
-- **vector space:**
+
+
 
     
